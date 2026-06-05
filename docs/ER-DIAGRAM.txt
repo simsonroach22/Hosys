@@ -1,0 +1,86 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Hotel Billing ER Diagram">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1"
+      connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169"
+      pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="users"
+          value="USERS&#10;----------------&#10;id (PK)&#10;name&#10;email&#10;password&#10;role"
+          style="rounded=0;whiteSpace=wrap;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="180" height="140" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="tables"
+          value="RESTAURANT_TABLES&#10;----------------&#10;id (PK)&#10;table_number&#10;capacity&#10;status"
+          style="rounded=0;whiteSpace=wrap;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="40" y="260" width="180" height="140" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="categories"
+          value="MENU_CATEGORIES&#10;----------------&#10;id (PK)&#10;name"
+          style="rounded=0;whiteSpace=wrap;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="700" y="40" width="180" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="menuitems"
+          value="MENU_ITEMS&#10;----------------&#10;id (PK)&#10;category_id (FK)&#10;name&#10;price&#10;availability"
+          style="rounded=0;whiteSpace=wrap;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="700" y="220" width="200" height="140" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="orders"
+          value="ORDERS&#10;----------------&#10;id (PK)&#10;table_id (FK)&#10;waiter_id (FK)&#10;status&#10;created_at"
+          style="rounded=0;whiteSpace=wrap;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="340" y="140" width="200" height="150" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="orderitems"
+          value="ORDER_ITEMS&#10;----------------&#10;id (PK)&#10;order_id (FK)&#10;menu_item_id (FK)&#10;quantity&#10;price"
+          style="rounded=0;whiteSpace=wrap;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="700" y="430" width="220" height="150" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="bills"
+          value="BILLS&#10;----------------&#10;id (PK)&#10;order_id (FK)&#10;subtotal&#10;tax&#10;discount&#10;total"
+          style="rounded=0;whiteSpace=wrap;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="340" y="420" width="200" height="150" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" edge="1" parent="1" source="users" target="orders">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e2" edge="1" parent="1" source="tables" target="orders">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e3" edge="1" parent="1" source="categories" target="menuitems">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e4" edge="1" parent="1" source="orders" target="orderitems">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e5" edge="1" parent="1" source="menuitems" target="orderitems">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e6" edge="1" parent="1" source="orders" target="bills">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
