@@ -16,7 +16,7 @@ public class RestaurantTable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer tableNumber;
+    private String tableNumber;
 
     private Integer capacity;
 
