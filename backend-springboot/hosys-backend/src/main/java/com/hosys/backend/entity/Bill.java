@@ -26,7 +26,7 @@ public class Bill {
 
     private BigDecimal tax;
 
-    private BigDecimal discount;
+    private BigDecimal totalAmount;
 
-    private BigDecimal total;
+    private String paymentStatus;
 }
