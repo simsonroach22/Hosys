@@ -9,4 +9,5 @@ public interface RestaurantTableRepository
         extends JpaRepository<RestaurantTable, Long> {
 
     List<RestaurantTable> findByStatus(String status);
+    long countByStatus(String status);
 }
