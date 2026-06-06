@@ -23,4 +23,22 @@ public class OrderController {
     public Order createOrder(@RequestBody Order order) {
         return orderService.saveOrder(order);
     }
+
+    @GetMapping("/pending")
+    public List<Order> pendingOrders() {
+        return orderService.getPendingOrders();
+    }
+
+    @GetMapping("/ready")
+    public List<Order> readyOrders() {
+        return orderService.getReadyOrders();
+    }
+
+    @PutMapping("/{id}/status")
+    public Order updateStatus(
+            @PathVariable Long id,
+            @RequestParam String status) {
+
+        return orderService.updateStatus(id, status);
+    }
 }

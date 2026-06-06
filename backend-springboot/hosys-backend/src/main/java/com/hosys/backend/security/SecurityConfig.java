@@ -28,8 +28,13 @@ public class SecurityConfig {
                                 .authorizeHttpRequests(auth -> auth
 
                                                 .requestMatchers(
-                                                                "/api/auth/**")
+                                                                "/api/auth/**",
+                                                                 "/swagger-ui/**",
+                                                                "/v3/api-docs/**",
+                                                                "/swagger-ui.html")
                                                 .permitAll()
+
+                                                
 
                                                 .requestMatchers("/api/users/**")
                                                 .hasAuthority("ADMIN")
