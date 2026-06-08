@@ -1,0 +1,34 @@
+services:
+
+  postgres:
+    image: postgres:17
+    container_name: hosys-postgres
+
+    environment:
+      POSTGRES_DB: hosys_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  hosys-backend:
+    build: .
+    container_name: hosys-backend
+
+    depends_on:
+      - postgres
+
+    ports:
+      - "8081:8081"
+
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/hosys_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+
+volumes:
+  postgres_data:

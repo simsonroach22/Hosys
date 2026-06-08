@@ -68,7 +68,6 @@ public class SecurityConfig {
                                                 .anyRequest()
                                                 .authenticated())
 
-                                .httpBasic(Customizer.withDefaults())
 
                                 .addFilterBefore(
                                                 jwtAuthenticationFilter,
