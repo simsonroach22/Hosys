@@ -6,6 +6,9 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import com.hosys.backend.enums.PaymentMethod;
+import com.hosys.backend.enums.PaymentStatus;
+
 @Entity
 @Table(name = "payments")
 @Getter
@@ -23,11 +26,13 @@ public class Payment {
     @JoinColumn(name = "bill_id")
     private Bill bill;
 
-    private String paymentMethod;
+    @Enumerated(EnumType.STRING)
+    private PaymentMethod paymentMethod;
 
     private BigDecimal amount;
 
-    private String paymentStatus;
+    @Enumerated(EnumType.STRING)
+    private PaymentStatus paymentStatus;
 
     private String transactionReference;
 

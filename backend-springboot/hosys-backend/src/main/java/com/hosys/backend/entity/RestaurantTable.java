@@ -1,5 +1,7 @@
 package com.hosys.backend.entity;
 
+import com.hosys.backend.enums.TableStatus;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,5 +22,6 @@ public class RestaurantTable {
 
     private Integer capacity;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private TableStatus status;
 }

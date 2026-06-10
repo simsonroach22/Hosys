@@ -1,6 +1,7 @@
 package com.hosys.backend.service;
 
 import com.hosys.backend.entity.Order;
+import com.hosys.backend.enums.OrderStatus;
 import com.hosys.backend.exception.ResourceNotFoundException;
 import com.hosys.backend.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,14 +24,14 @@ public class OrderService {
     }
 
     public List<Order> getPendingOrders() {
-        return orderRepository.findByStatus("PENDING");
+        return orderRepository.findByStatus(OrderStatus.PENDING);
     }
 
     public List<Order> getReadyOrders() {
-        return orderRepository.findByStatus("READY");
+        return orderRepository.findByStatus(OrderStatus.READY);
     }
 
-    public Order updateStatus(Long id, String status) {
+    public Order updateStatus(Long id, OrderStatus status) {
 
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(
@@ -40,6 +41,4 @@ public class OrderService {
 
         return orderRepository.save(order);
     }
-
-    
 }

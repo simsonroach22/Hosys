@@ -1,9 +1,11 @@
 package com.hosys.backend.controller;
 
 import com.hosys.backend.entity.Order;
+import com.hosys.backend.enums.OrderStatus;
 import com.hosys.backend.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import com.hosys.backend.enums.OrderStatus;
 
 import java.util.List;
 
@@ -37,7 +39,7 @@ public class OrderController {
     @PutMapping("/{id}/status")
     public Order updateStatus(
             @PathVariable Long id,
-            @RequestParam String status) {
+            @RequestParam OrderStatus status) {
 
         return orderService.updateStatus(id, status);
     }

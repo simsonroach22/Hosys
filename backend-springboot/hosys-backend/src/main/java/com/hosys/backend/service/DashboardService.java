@@ -1,6 +1,8 @@
 package com.hosys.backend.service;
 
 import com.hosys.backend.dto.DashboardSummary;
+import com.hosys.backend.enums.OrderStatus;
+import com.hosys.backend.enums.TableStatus;
 import com.hosys.backend.repository.OrderRepository;
 import com.hosys.backend.repository.PaymentRepository;
 import com.hosys.backend.repository.RestaurantTableRepository;
@@ -19,12 +21,12 @@ public class DashboardService {
 
         return DashboardSummary.builder()
                 .totalOrders(orderRepository.count())
-                .pendingOrders(orderRepository.countByStatus("PENDING"))
-                .completedOrders(orderRepository.countByStatus("COMPLETED"))
+                .pendingOrders(orderRepository.countByStatus(OrderStatus.PENDING))
+                .completedOrders(orderRepository.countByStatus(OrderStatus.COMPLETED))
 
                 .totalTables(tableRepository.count())
-                .availableTables(tableRepository.countByStatus("AVAILABLE"))
-                .occupiedTables(tableRepository.countByStatus("OCCUPIED"))
+                .availableTables(tableRepository.countByStatus(TableStatus.AVAILABLE))
+                .occupiedTables(tableRepository.countByStatus(TableStatus.OCCUPIED))
 
                 .totalRevenue(paymentRepository.getTotalRevenue())
                 .build();

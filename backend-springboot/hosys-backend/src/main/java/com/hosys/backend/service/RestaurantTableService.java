@@ -4,6 +4,7 @@ import com.hosys.backend.entity.RestaurantTable;
 import com.hosys.backend.repository.RestaurantTableRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import com.hosys.backend.enums.TableStatus;
 
 import java.util.List;
 
@@ -22,6 +23,6 @@ public class RestaurantTableService {
     }
 
     public List<RestaurantTable> getAvailableTables() {
-        return tableRepository.findByStatus("AVAILABLE");
+        return tableRepository.findByStatus(TableStatus.AVAILABLE);
     }
 }

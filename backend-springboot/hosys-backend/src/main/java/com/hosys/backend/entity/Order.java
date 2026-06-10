@@ -1,5 +1,7 @@
 package com.hosys.backend.entity;
 
+import com.hosys.backend.enums.OrderStatus;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,7 +28,8 @@ public class Order {
     @JoinColumn(name = "waiter_id")
     private User waiter;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
 
     private String remarks;
 
